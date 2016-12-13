@@ -36,15 +36,6 @@
 </div>
 -->
 
-<!-- PAGINATION HAUT -->
-<div class="row">
-	<div class="col-md-5"></div>
-	<div class="col-md-3">
-		<uib-pagination total-items="nbTotalElem" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" ng-change="getData();" items-per-page="nbItemPerPage"></uib-pagination>
-	</div>
-	<div class="col-md-4"></div>
-</div>
-
 <!-- TABLEAU -->
 <div class="row">
 	<div class="col-md-1"></div>
@@ -59,7 +50,7 @@
 				</thead>
 
 				<tbody>
-					<tr id="Etab-\{{ listeEtablissement[$index].REF }}" ng-repeat="row in listeEtablissement track by $index">
+					<tr id="Etab-\{{ listeMonument[$index].REF }}" ng-repeat="row in listeMonument track by $index">
 						<td ng-repeat="colonne in output_collumns" >
 							<a href="\{{ row[colonne.name] }}" target="_blank" ng-if="colonne.name == 'lien' ">
 								\{{ row[colonne.name] }}

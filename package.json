@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/rock-up-my-life/Projet_TWX.git"
+    "url": "git+https://github.com/Brahim24/XML-Project"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/rock-up-my-life/Projet_TWX/issues"
+    "url": "https://github.com/Brahim24/XML-Project/issues"
   },
   "dependencies": {
     "basex": "^0.7.0",
@@ -27,5 +27,5 @@
     "mkdirp": "^0.5.1",
     "serve-favicon": "^2.2.0"
   },
-  "homepage": "https://gitlab.com/rock-up-my-life/Projet_TWX#README"
+  "homepage": "https://github.com/Brahim24/XML-Project#README"
 }

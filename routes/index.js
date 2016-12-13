@@ -4,7 +4,7 @@ var session = require('express-session');
 var fs = require("fs");
 var exec = require('child_process').exec;
 var db_name = "merimee-MH",
-	default_elements_per_pages = 25,
+	default_elements_per_pages = 30,
 	default_order_by = 'REF';
 
 var dataAdaptater = {
@@ -71,13 +71,13 @@ function constructWhereClause(filter) {
 }
 
 function truncateList(list, start, end) {
-	listeEtablissements = [];
+	listeMonuments = [];
 	var ii = 0;
 	for(var i = start; i < end; i++) {
-		listeEtablissements[ii] = JSON.parse(list[i]);
+		listeMonuments[ii] = JSON.parse(list[i]);
 		ii++;
 	}
-	return listeEtablissements;
+	return listeMonuments;
 }
 
 function checkAndGetSessionParameters(session) {
@@ -114,11 +114,11 @@ router.get('/get', function(req, res) {
 		end = (query_result.result.length < end) ? query_result.result.length : end;
 
 		parameters.last_json_result = query_result.result;
-		var listeEtablissements = truncateList(query_result.result, start, end);
+		var listeMonuments = truncateList(query_result.result, start, end);
 
 		res.end(
 			JSON.stringify( { 
-				data: listeEtablissements, 
+				data: listeMonuments, 
 				orderBy : parameters.orderBy, 
 				nbTotalElem : query_result.result.length, 
 				nbItemPerPage : parameters.nbItemPerPage,

@@ -3,10 +3,12 @@ body, html {
   font-family: 'Arial', sans-serif;
 }
 
+header {
+  text-align: center;
+}
+
 footer {
   padding: 25px;
 }
 
-header {
-  text-align: center;
-}
+

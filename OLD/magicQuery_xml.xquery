@@ -1,1 +1,0 @@
-for $x in /csv_data/row $$__WHERE__$$ $$__ORDERBY__$$ return $x
