@@ -1,0 +1,105 @@
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="collapse" id="collapseTrier">
+			<div class="well">
+				<form class="form-inline">
+					<fieldset>
+						<div class="form-group">
+							<label for="colonnesAffichees">Colonnes affichées :</label>
+							<span name="colonnesAffichees" 
+								isteven-multi-select
+								input-model="all_collumns"
+								output-model="output_collumns"
+								button-label="name"
+								item-label="name"
+								tick-property="ticked">
+							</span>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- MAP
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div id="mapCanvas" uib-collapse="isCollapsed" >
+			<ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control" draggable="true" options="options" bounds="map.bounds" refresh="true" pan="true">
+				<ui-gmap-markers models="etabMarkers" coords="'self'" icon="'icon'" click="onClick" options="markersOptions" doCluster="true">
+				</ui-gmap-markers>
+			</ui-gmap-google-map>
+		</div>
+	</div>
+</div>
+-->
+
+<!-- PAGINATION HAUT -->
+<div class="row">
+	<div class="col-md-5"></div>
+	<div class="col-md-3">
+		<uib-pagination total-items="nbTotalElem" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" ng-change="getData();" items-per-page="nbItemPerPage"></uib-pagination>
+	</div>
+	<div class="col-md-4"></div>
+</div>
+
+<!-- TABLEAU -->
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<div class="table">
+			<table class="table table-hover table-striped ">
+				<thead>
+					<tr>
+						<th ng-repeat="colonne in output_collumns">\{{ colonne.label }}</th>
+						<th>Plus d'info</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr id="Etab-\{{ listeEtablissement[$index].REF }}" ng-repeat="row in listeEtablissement track by $index">
+						<td ng-repeat="colonne in output_collumns" >
+							<a href="\{{ row[colonne.name] }}" target="_blank" ng-if="colonne.name == 'lien' ">
+								\{{ row[colonne.name] }}
+							</a>
+							<p ng-if="colonne.name != 'lien' ">\{{ row[colonne.name] }}</p>
+						</td>
+						<td style="text-align: center;">
+							<a ng-click="showModal(row)" href="#"><span class="glyphicon glyphicon-info-sign"></span></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="col-md-1"></div>
+</div>
+
+<!-- PAGINATION BAS -->
+<div class="row">
+	<div class="col-md-5"></div>
+	<div class="col-md-3">
+		
+			<uib-pagination total-items="nbTotalElem" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" ng-change="getData();" items-per-page="nbItemPerPage"></uib-pagination>
+
+	</div>
+	<div class="col-md-4"></div>
+</div>
+<!-- MODAL ETABLISSEMENTS LIGNES TABLEAU -->
+
+<script type="text/ng-template" id="modalEtab.html">
+	<div class="modal-header">		
+		<button type="button" class="close" ng-click="close()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">\{{ mEtab.nom }}</h4>
+	</div>
+	<div class="modal-body">
+		<div ng-repeat="c in colonnes">
+			<strong>\{{ c.label }} :</strong> <p ng-if="c.name != 'lien'">\{{ mEtab[c.name] }}</p><a href="\{{ mEtab[c.name] }}" target="_blank" ng-if=" c.name == 'lien'">\{{ mEtab[c.name] }}</a>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-click="close()">Close</button>
+	</div>
+</script>

@@ -1,0 +1,12 @@
+body, html {
+  background-color : white;
+  font-family: 'Arial', sans-serif;
+}
+
+footer {
+  padding: 25px;
+}
+
+header {
+  text-align: center;
+}
